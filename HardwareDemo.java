@@ -40,7 +40,7 @@ public class HardwareDemo {
 
 
     //initialize servo
-//    clawServo = hwMap.get(Servo.class, "clawServo");
+    clawServo = hwMap.get(Servo.class, "clawServo");
     arm = hwMap.get(DcMotor.class, "arm");
     rampSupport = hwMap.get(Servo.class, "rampSupport");
   }
