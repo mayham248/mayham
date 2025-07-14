@@ -38,10 +38,15 @@ public class HardwareDemo {
     left.setDirection(DcMotor.Direction.FORWARD);
     left.setPower(0);
 
+    arm = hwMap.get(DcMotor.class, "arm");
+    arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    arm.setDirection(DcMotor.Direction.FORWARD);arm.setPower(0);
 
     //initialize servo
     clawServo = hwMap.get(Servo.class, "clawServo");
-    arm = hwMap.get(DcMotor.class, "arm");
+
     rampSupport = hwMap.get(Servo.class, "rampSupport");
   }
 

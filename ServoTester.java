@@ -34,8 +34,8 @@ public class ServoTester extends LinearOpMode {
             }
 
 
-            robot.clawServo.setPosition(servoPosition);
-            telemetry.addData("servo position", robot.clawServo.getPosition());
+            robot.rampSupport.setPosition(servoPosition);
+            telemetry.addData("servo position", robot.rampSupport.getPosition());
             telemetry.update();
         }
     }

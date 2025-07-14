@@ -16,13 +16,13 @@ public class AutoDemo extends LinearOpMode {
         telemetry.update();
         //this is where the auto red code will go
         waitForStart();
-        encoderMove(20.5, 0.7);
-        turning(100, 0.4);
-        encoderMove(20.5, 0.7);
 
+        encoderMove(24, 0.4);
+
+        turning(0, 0.4);
     }
 
-    public void encoderMove(double distance,Double speed){
+    public void encoderMove(double distance,double speed){
         double wheelCircumference = 3.5 * Math.PI;
         double wheelMotor = 537.7;
         double ticks = (distance * (wheelMotor / wheelCircumference));
@@ -73,6 +73,15 @@ public class AutoDemo extends LinearOpMode {
 
         robot.left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    private void moveArm(int position) {
+        robot.arm.setTargetPosition(position);
+        robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.arm.setPower(1);
+        while (robot.arm.isBusy()) {
+        }
+        robot.arm.setPower(0);
     }
 
 }

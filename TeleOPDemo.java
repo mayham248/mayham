@@ -19,6 +19,8 @@ public class TeleOPDemo extends LinearOpMode {
         boolean pressingLT = false;
         boolean pressingA = false;
         boolean pressingY = false;
+        boolean pressingDUp = false;
+        boolean pressingDDown = false;
 
         waitForStart();
         while (opModeIsActive()) {
@@ -36,15 +38,24 @@ public class TeleOPDemo extends LinearOpMode {
             robot.left.setPower(left);
             robot.right.setPower(right);
 
-
-            if (gamepad2.left_bumper) {
-                robot.rampSupport.setPosition(0);
+            //moves the ramp support up/down
+            if (gamepad1.dpad_up && !pressingDUp) {
+               robot.rampSupport.setPosition(0.1);
+               pressingDUp = true;
+            } else if (!gamepad1.dpad_up){
+                pressingDUp = false;
+            }
+            if (gamepad1.dpad_down && !pressingDDown) {
+                robot.rampSupport.setPosition(0.9);
+                pressingDDown = true;
+            } else if (!gamepad1.dpad_down){
+                pressingDDown = false;
             }
 
             if ((gamepad2.left_trigger > .3) && !pressingLT)
             {
-                robot.clawServo.setPosition(0.7);
-            pressingLT = true;
+                robot.clawServo.setPosition(0.65);
+                pressingLT = true;
             } else if (!(gamepad2.left_trigger > 0.3)){
               pressingLT = false;
             }
@@ -57,25 +68,25 @@ public class TeleOPDemo extends LinearOpMode {
             }
             //robot arm moves up
             if (gamepad2.y) {
-                moveArm(0);
+                moveArm(-3500);
             }
             //robot arm moves down
             if (gamepad2.a) {
-                moveArm(650);
+              moveArm(-4820);
 
             }
             telemetry.addData("arm position", robot.arm.getCurrentPosition());
             telemetry.update();
 
-//        if (!robot.arm.isBusy()){
-//            robot.arm.setPower(0);
-//            robot.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-//        }
+            if (!robot.arm.isBusy()){
+                robot.arm.setPower(0);
+                robot.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            }
 
         }
     }
 
-    public void moveArm(int position) {
+    private void moveArm(int position) {
         robot.arm.setTargetPosition(position);
         robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.arm.setPower(1);
