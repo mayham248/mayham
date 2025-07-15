@@ -54,21 +54,21 @@ public class TeleOPDemo extends LinearOpMode {
 
             if ((gamepad2.left_trigger > .3) && !pressingLT)
             {
-                robot.clawServo.setPosition(0.65);
+                robot.clawServo.setPosition(0.9);
                 pressingLT = true;
             } else if (!(gamepad2.left_trigger > 0.3)){
               pressingLT = false;
             }
             if ((gamepad2.right_trigger > .3) && !pressingRT)
             {
-                robot.clawServo.setPosition(0.75);
+                robot.clawServo.setPosition(0.75 );
                 pressingRT = true;
             } else if (!(gamepad2.right_trigger > 0.3)){
                 pressingRT = false;
             }
             //robot arm moves up
             if (gamepad2.y) {
-                moveArm(-3500);
+                moveArm(-4200);
             }
             //robot arm moves down
             if (gamepad2.a) {

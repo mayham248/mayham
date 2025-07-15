@@ -17,9 +17,10 @@ public class AutoDemo extends LinearOpMode {
         //this is where the auto red code will go
         waitForStart();
 
-        encoderMove(24, 0.4);
-
-        turning(0, 0.4);
+        encoderMove(23, 0.4);
+        robot.rampSupport.setPosition(0.9);
+        encoderMove(23,0.4);
+        robot.rampSupport.setPosition(0.1);
     }
 
     public void encoderMove(double distance,double speed){
