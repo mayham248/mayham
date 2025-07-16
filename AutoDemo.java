@@ -10,6 +10,8 @@ public class AutoDemo extends LinearOpMode {
     private ElapsedTime runtime= new ElapsedTime();
     HardwareDemo robot = HardwareDemo.getInstance();
 
+    private int timer = 5;
+
     public void runOpMode(){
         robot.init(hardwareMap);
         telemetry.addData("status","Hello Drivers!");
@@ -17,11 +19,27 @@ public class AutoDemo extends LinearOpMode {
         //this is where the auto red code will go
         waitForStart();
 
-        encoderMove(23, 0.4);
-        robot.rampSupport.setPosition(0.9);
-        encoderMove(23,0.4);
+        moveArm(700);
+        encoderMove(25, 0.4);
         robot.rampSupport.setPosition(0.1);
+        sleep(1000);
+        encoderMove(24,0.4);
+        robot.rampSupport.setPosition(0.9);
+        encoderMove(30,0.4);
+        turning(600,0.4);
+        encoderMove(93,0.4);
+        robot.clawServo.setPosition(0.85);
+        encoderMove(93,-0.4);
+        turning(700,0.4);
+        encoderMove(50,0.4);
+        robot.rampSupport.setPosition(0.1);
+        encoderMove(24,0.4);
+        robot.rampSupport.setPosition(0.9);
+        moveArm(0);
+        balancing();
     }
+
+
 
     public void encoderMove(double distance,double speed){
         double wheelCircumference = 3.5 * Math.PI;
@@ -83,6 +101,16 @@ public class AutoDemo extends LinearOpMode {
         while (robot.arm.isBusy()) {
         }
         robot.arm.setPower(0);
+    }
+    public void balancing(){
+        double pitch = robot.imu.getRobotYawPitchRollAngles().getPitch();
+        if(pitch > 0){
+            robot.setPower(0.2,0.2);
+        } else if (pitch < 0){
+            robot.setPower(-0.2,-0.2);
+
+        }
+
     }
 
 }

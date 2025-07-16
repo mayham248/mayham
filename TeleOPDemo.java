@@ -54,25 +54,25 @@ public class TeleOPDemo extends LinearOpMode {
 
             if ((gamepad2.left_trigger > .3) && !pressingLT)
             {
-                robot.clawServo.setPosition(0.9);
+                robot.clawServo.setPosition(0.95);
                 pressingLT = true;
             } else if (!(gamepad2.left_trigger > 0.3)){
               pressingLT = false;
             }
             if ((gamepad2.right_trigger > .3) && !pressingRT)
             {
-                robot.clawServo.setPosition(0.75 );
+                robot.clawServo.setPosition(0.85);
                 pressingRT = true;
             } else if (!(gamepad2.right_trigger > 0.3)){
                 pressingRT = false;
             }
             //robot arm moves up
             if (gamepad2.y) {
-                moveArm(-4200);
+                robot.moveArm(700);
             }
             //robot arm moves down
             if (gamepad2.a) {
-              moveArm(-4820);
+              robot.moveArm(0);
 
             }
             telemetry.addData("arm position", robot.arm.getCurrentPosition());
@@ -86,9 +86,5 @@ public class TeleOPDemo extends LinearOpMode {
         }
     }
 
-    private void moveArm(int position) {
-        robot.arm.setTargetPosition(position);
-        robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.arm.setPower(1);
-    }
+
 }
