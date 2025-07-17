@@ -16,26 +16,34 @@ public class AutoBlue extends LinearOpMode {
         robot.init(hardwareMap);
         telemetry.addData("status","Hello Drivers!");
         telemetry.update();
-        //this is where the auto red code will go
+        robot.left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        //this is where the auto blue code will go
         waitForStart();
 
-        //moveArm(700);
-        //encoderMove(25, 0.4);
-        //robot.rampSupport.setPosition(0.1);
-        //sleep(1000);
-        //encoderMove(24,0.4);
-       // robot.rampSupport.setPosition(0.9);
-        //encoderMove(30,0.4);
-        turning(-1000,0.4);
-        //encoderMove(93,0.4);
-        //robot.clawServo.setPosition(0.85);
-        //encoderMove(93,-0.4);
-        //turning(-700,0.4);
-        //encoderMove(50,0.4);
-        //robot.rampSupport.setPosition(0.1);
-        //encoderMove(24,0.4);
-        //robot.rampSupport.setPosition(0.9);
-        //moveArm(0);
+        robot.clawServo.setPosition(0.85);
+        moveArm(700);
+        encoderMove(22, 0.4);
+        robot.rampSupport.setPosition(0.1);
+        sleep(1000);
+        encoderMove(24,0.4);
+         robot.rampSupport.setPosition(0.9);
+        encoderMove(40,0.4);
+        turning(-1700,0.4);
+        encoderMove(90,0.4);
+        robot.clawServo.setPosition(0.95);
+        encoderMove(-90,0.4);
+        turning(-1700,0.4);
+        encoderMove(50,0.4);
+        robot.rampSupport.setPosition(0.1);
+        sleep(1000);
+        encoderMove(24,0.4);
+        robot.rampSupport.setPosition(0.9);
+        moveArm(0);
+
+
+
     }
 
 

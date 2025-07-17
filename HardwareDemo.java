@@ -22,6 +22,7 @@ public class HardwareDemo {
   public DcMotor arm;
   public Servo clawServo;
   public Servo rampSupport;
+  public Servo pendulum;
   public IMU imu;
 
   public static double maxSpeed = 1;
@@ -67,6 +68,8 @@ public class HardwareDemo {
     clawServo = hwMap.get(Servo.class, "clawServo");
 
     rampSupport = hwMap.get(Servo.class, "rampSupport");
+
+    pendulum = hwMap.get(Servo.class, "pendulum");
   }
 
 public void setPower(double motor1, double motor2)  {

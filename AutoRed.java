@@ -19,24 +19,26 @@ public class AutoRed extends LinearOpMode {
         //this is where the auto red code will go
         waitForStart();
 
+        robot.clawServo.setPosition(0.85);
         moveArm(700);
-        encoderMove(25, 0.4);
+        encoderMove(22, 0.4);
         robot.rampSupport.setPosition(0.1);
         sleep(1000);
         encoderMove(24,0.4);
         robot.rampSupport.setPosition(0.9);
-        encoderMove(30,0.4);
-        turning(600,0.4);
-        encoderMove(93,0.4);
-        robot.clawServo.setPosition(0.85);
-        encoderMove(93,-0.4);
-        turning(700,0.4);
+        encoderMove(40,0.4);
+        turning(1700,0.4);
+        encoderMove(85,0.4);
+        robot.clawServo.setPosition(0.95);
+        encoderMove(-85,0.4);
+        turning(1700,0.4);
         encoderMove(50,0.4);
         robot.rampSupport.setPosition(0.1);
+        sleep(1000);
         encoderMove(24,0.4);
         robot.rampSupport.setPosition(0.9);
         moveArm(0);
-        balancing();
+
     }
 
 
